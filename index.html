@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyPortfolio | Stebin</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --primary:#020617;
+    --secondary:#6366f1;
+    --text:#e5e7eb;
+    --text-light:#9ca3af;
+    --border:rgba(255,255,255,.08);
+}
+/* ===== CERTIFICATIONS ===== */
+.cert-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:2rem;
+}
+
+.cert-card{
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(16px);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:20px;
+  padding:2rem;
+  transition:.35s ease;
+}
+
+.cert-card:hover{
+  transform: translateY(-8px);
+  box-shadow:
+    0 25px 60px rgba(0,0,0,0.6),
+    0 0 40px rgba(99,102,241,0.25);
+}
+
+.cert-icon{
+  width:48px;
+  height:48px;
+  margin-bottom:1rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  background: rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(10px);
+}
+
+.cert-icon img{
+  width:28px;
+  height:28px;
+  object-fit:contain;
+}
+
+.cert-card h3{
+  font-size:1.2rem;
+  margin-bottom:.6rem;
+}
+
+.cert-org{
+  font-size:.9rem;
+  color:var(--text-light);
+  margin-bottom:1rem;
+}
+
+.cert-skills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+  margin-bottom:1rem;
+}
+
+.cert-skills span{
+  font-size:.75rem;
+  padding:.3rem .6rem;
+  border-radius:999px;
+  background: rgba(99,102,241,0.15);
+  border:1px solid rgba(99,102,241,0.3);
+}
+
+.cert-link{
+  font-size:.85rem;
+  color:#fff;
+  text-decoration:none;
+  border-bottom:1px solid var(--secondary);
+}
+
+.cert-id{
+  display:block;
+  margin-top:.5rem;
+  font-size:.75rem;
+  color:var(--text-light);
+}
+
+/* NAME — SINGLE LINE + ANIMATION */
+/* NAME — BIG, SINGLE LINE, OLD FONT */
+.hero-name{
+    font-family: 'Playfair Display', serif;   /* 👈 old font */
+    font-size: 4.0rem;                        /* 👈 bigger */
+    font-weight: 800;                         /* 👈 bold */
+    line-height: 1.05;
+    white-space: nowrap;                      /* 👈 one line */
+
+    opacity: 0;
+    transform: translateY(28px);
+    animation: nameReveal 0.75s ease-out forwards;
+}
+
+/* Reveal animation */
+@keyframes nameReveal{
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Highlight shimmer */
+.highlight{
+    background: linear-gradient(
+        90deg,
+        #6366f1,
+        #a5b4fc,
+        #6366f1
+    );
+    background-size: 220%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer{
+    from{ background-position: 0% }
+    to{ background-position: 220% }
+}
+
+/* Responsive safety */
+@media (max-width: 1024px){
+    .hero-name{
+        font-size: 4.2rem;
+    }
+}
+
+@media (max-width: 768px){
+    .hero-name{
+        font-size: 3.2rem;
+        white-space: normal;
+        text-align: center;
+    }
+}
+
+
+
+
+/* Mobile safety */
+@media (max-width: 768px){
+    .hero-name{
+        font-size: 3rem;
+        white-space: normal;
+    }
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+    font-family:'DM Sans',sans-serif;
+    background:var(--primary);
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+/* STARFIELD */
+#starfield{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+}
+
+/* LAYER FIX */
+nav, section, footer{
+    position:relative;
+    z-index:1;
+}
+
+.container{
+    max-width:1280px;
+    margin:auto;
+    padding:0 2rem;
+}
+
+/* NAV */
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    background:rgba(2,6,23,.75);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+}
+.nav-content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1.2rem 2rem;
+}
+.logo{
+    font-family:'Playfair Display',serif;
+    font-size:1.5rem;
+    font-weight:700;
+    color:#fff;
+    text-decoration:none;
+}
+.nav-links{
+    display:flex;
+    gap:2rem;
+    list-style:none;
+}
+.nav-links a{
+    color:var(--text-light);
+    text-decoration:none;
+}
+.cta-button{
+    background:var(--secondary);
+    color:#fff;
+    padding:.7rem 1.4rem;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:600;
+}
+
+/* HERO */
+.hero{
+    min-height:100vh;
+    padding-top:140px;
+}
+.hero-content{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:4rem;
+    align-items:center;
+}
+.highlight{color:var(--secondary)}
+.hero-text p{
+    margin:2.0rem 0;
+    color:var(--text-light);
+    font-size:1.8rem;
+}
+.hero-image{
+    position: relative;
+    height: 520px;
+    border-radius: 26px;
+    overflow: hidden;
+}
+
+/* GLASS LAYER */
+.glass-layer{
+    position: absolute;
+    inset: 0;
+    border-radius: 26px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.1),
+        rgba(255,255,255,0.03)
+    );
+
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+
+    border: 1.5px solid rgba(255,255,255,0.2);
+
+    box-shadow:
+        0 8px 32px rgba(31, 38, 135, 0.37),
+        inset 0 0 20px rgba(255,255,255,0.05);
+
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* IMAGE ABOVE GLASS */
+.hero-image img{
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 26px;
+    filter: brightness(1.05) contrast(1.08);
+}
+
+
+.hero-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:26px;
+    box-shadow: 0 0 60px rgba(99,102,241,0.25);
+    pointer-events:none;
+    z-index: 3;
+}
+
+.hero-image:hover{
+    transform: translateY(-6px);
+    transition: transform 0.3s ease;
+
+}
+
+.hero{
+    background:
+      radial-gradient(
+        600px 400px at 70% 40%,
+        rgba(99,102,241,0.15),
+        transparent 100%
+      );
+}
+
+
+/* SECTIONS */
+section{padding:8rem 0}
+.section-header{
+    text-align:center;
+    margin-bottom:4rem;
+}
+.section-header h2{
+    font-family:'Playfair Display',serif;
+    font-size:3rem;
+}
+.section-header p{
+    max-width:600px;
+    margin:auto;
+    color:var(--text-light);
+}
+
+/* GRID & CARDS */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:2rem;
+}
+.card{
+    background:rgba(255,255,255,.04);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:2.5rem;
+    backdrop-filter:blur(10px);
+    transition:.3s;
+}
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+
+/* PROJECTS */
+.projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
+    gap:3rem;
+}
+.project{
+    background:rgba(255,255,255,.05);
+    border-radius:22px;
+    overflow:hidden;
+}
+.project-img{
+    height:280px;
+    background:linear-gradient(135deg,#4f46e5,#9333ea);
+}
+.project-info{padding:2rem}
+
+/* ===== MINIMAL CTA (GLASS STYLE) ===== */
+.cta-section{
+    padding: 6rem 0 8rem;
+    display: flex;
+    justify-content: center;
+}
+
+.cta-box{
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    border-radius: 22px;
+    padding: 3rem 4rem;
+    text-align: center;
+    max-width: 520px;
+}
+
+.cta-box h2{
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.cta-box p{
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+/* Contact link */
+.cta-link{
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.cta-link::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--secondary);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .3s ease;
+}
+
+.cta-link:hover::after{
+    transform: scaleX(1);
+    transform-origin: left;
+}
+.cta-box{
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(-6px); }
+}
+
+
+/* FOOTER */
+footer{
+    padding:3rem 0;
+    text-align:center;
+    color:var(--text-light);
+}
+
+@media(max-width:768px){
+    .hero-content{grid-template-columns:1fr}
+    .nav-links{display:none}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="starfield"></canvas>
+
+<nav>
+<div class="nav-content">
+<a href="#" class="logo">MyPortfolio</a>
+<ul class="nav-links">
+<li><a href="#home">Home</a></li>
+<li><a href="#certifications">Certifications</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact" class="cta-button">Contact</a></li>
+</ul>
+</div>
+</nav>
+
+<section class="hero" id="home">
+<div class="container hero-content">
+<div class="hero-text">
+    <h1 class="hero-name">
+        Stebin <span class="highlight">Jacob Titus</span>
+      </h1>
+      
+<p>Cyber Security Enthusiast & Developer</p>
+<p>Building secure, modern, and elegant digital experiences.</p>
+<a href="#contact" class="cta-button">Contact Me</a>
+</div>
+<div class="hero-image">
+    <div class="glass-layer"></div>
+    <img src="stebinpic4.png" alt="Stebin Jacob Titus">
+  </div>  
+</div>
+</section>
+
+<section id="certifications">
+    <div class="container">
+      <div class="section-header">
+        <h2>Certifications</h2>
+        <p>Verified credentials and skill badges.</p>
+      </div>
+  
+      <div class="cert-grid">
+  
+        <!-- 1 -->
+        <div class="cert-card">
+            <div class="cert-icon">
+                <img src="assets/icons/gcsb.png" alt="Google Cloud">
+              </div>
+              
+          <h3>Develop GenAI Apps with Gemini & Streamlit</h3>
+          <p class="cert-org">Google Cloud Skills Boost · May 2024</p>
+          <div class="cert-skills">
+            <span>Gemini</span><span>Streamlit</span><span>Vertex AI</span>
+          </div>
+          <a href="https://www.credly.com/badges/7684f240-1e65-41f6-8f01-d09c65cfed1a/public_url"
+             target="_blank" class="cert-link">View Credential</a>
+        </div>
+  
+        <!-- 2 -->
+        <div class="cert-card">
+            <div class="cert-icon">
+                <img src="assets/icons/ibm_logo.png" alt="Google Cloud">
+              </div>
+          <h3>Artificial Intelligence Fundamentals</h3>
+          <p class="cert-org">IBM SkillsBuild · Jan 2026</p>
+          <div class="cert-skills">
+            <span>AI</span><span>NLP</span><span>Neural Networks</span><span>Deep Learning</span>
+          </div>
+        </div>
+  
+        <!-- 3 -->
+        <div class="cert-card">
+            <div class="cert-icon">
+                <img src="assets/icons/keralablockchainacademy_logo.png" alt="Google Cloud">
+              </div>
+          <h3>Kerala Blockchain Academy</h3>
+          <p class="cert-org">KBA · Oct 2025</p>
+          <div class="cert-skills">
+            <span>Blockchain</span><span>Cryptography</span><span>Crypto Platforms</span>
+          </div>
+          <small class="cert-id">ID: IIITMK-KBA-BFP-OL-44553</small>
+        </div>
+  
+        <!-- 4 -->
+        <div class="cert-card">
+            <div class="cert-icon">
+                <img src="assets/icons/nptel.png" alt="Google Cloud">
+              </div>
+          <h3>Database Management System</h3>
+          <p class="cert-org">NPTEL · Oct 2024</p>
+          <div class="cert-skills">
+            <span>DBMS</span>
+          </div>
+          <a href="https://archive.nptel.ac.in/noc/Ecertificate/?q=NPTEL24CS75S23960045902761320"
+             target="_blank" class="cert-link">View Certificate</a>
+        </div>
+  
+        <!-- 5 -->
+        <div class="cert-card">
+            <div class="cert-icon">
+                <img src="assets/icons/gdsc_depauw_logo.png" alt="Google Cloud">
+              </div>
+          <h3>Gen AI Study Jams</h3>
+          <p class="cert-org">Google DSC · May 2024</p>
+          <div class="cert-skills">
+            <span>Machine Learning</span>
+          </div>
+        </div>
+  
+        <!-- 6 -->
+        <<div class="cert-card">
+            <div class="cert-icon">
+                <img src="assets/icons/internet_society.png" alt="Google Cloud">
+              </div>
+          <h3>Drones and Security Challenges</h3>
+          <p class="cert-org">Internet Society · Feb 2024</p>
+          <div class="cert-skills">
+            <span>Perimeter Security</span>
+          </div>
+        </div>
+  
+        <!-- 7 -->
+        <div class="cert-card">
+            <div class="cert-icon">
+                <img src="assets/icons/IIT_delhi.png" alt="Google Cloud">
+              </div>
+          <h3>Cyber Security & Ethical Hacking</h3>
+          <p class="cert-org">TRYST, IIT Delhi · Nov 2023</p>
+          <div class="cert-skills">
+            <span>OSINT</span>
+          </div>
+          <small class="cert-id">ID: IITCYB1452B</small>
+        </div>
+  
+        <!-- 8 -->
+        <div class="cert-card">
+            <div class="cert-icon">
+                <img src="assets/icons/flutter.png" alt="Google Cloud">
+              </div>
+          <h3>Building Games with Flutter</h3>
+          <p class="cert-org">Google Developers Group · Dec 2023</p>
+          <div class="cert-skills">
+            <span>Flutter</span>
+          </div>
+          <small class="cert-id">ID: GDGC/DFK23/0149</small>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+
+<section id="skills">
+<div class="container">
+<div class="section-header">
+<h2>Skills</h2>
+<p>Technologies I work with.</p>
+</div>
+<div class="grid">
+<div class="card">Frontend – HTML, CSS, JS, React</div>
+<div class="card">Backend – Python, Flask, SQL</div>
+<div class="card">Security – Face Auth, Liveness</div>
+<div class="card">Tools – Git, GitHub, Figma</div>
+</div>
+</div>
+</section>
+
+<section id="projects">
+<div class="container">
+<div class="section-header">
+<h2>Projects</h2>
+<p>Selected work.</p>
+</div>
+<div class="projects-grid">
+<div class="project">
+<div class="project-img"></div>
+<div class="project-info">
+<h3>Face Authentication System</h3>
+<p>Biometric login with spoof detection.</p>
+</div>
+</div>
+<div class="project">
+<div class="project-img" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)"></div>
+<div class="project-info">
+<h3>Session Hijacking Detection</h3>
+<p>Fingerprint-based protection.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="contact" class="cta-section">
+    <div class="cta-box">
+      <h2>Have a project in mind?</h2>
+      <p>Let’s build something impactful.</p>
+      <a href="mailto:hello@stebin.in" class="cta-link">Contact Me</a>
+    </div>
+  </section>
+
+<footer>
+<p>© 2026 Stebin Jacob Titus</p>
+</footer>
+
+<!-- 🌌 STARFIELD SCRIPT -->
+<script>
+const canvas = document.getElementById("starfield");
+const ctx = canvas.getContext("2d");
+
+let stars=[],mouseX=0,mouseY=0,scrollOffset=0;
+
+function resize(){
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+}
+resize();
+window.addEventListener("resize",resize);
+
+const STAR_COUNT=Math.floor((window.innerWidth*window.innerHeight)/7000);
+
+for(let i=0;i<STAR_COUNT;i++){
+  stars.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*1.6+0.4,
+    speed:Math.random()*0.35+0.05,
+    depth:Math.random()*2+0.5
+  });
+}
+
+window.addEventListener("mousemove",e=>{
+  mouseX=(e.clientX-canvas.width/2)*0.002;
+  mouseY=(e.clientY-canvas.height/2)*0.002;
+});
+window.addEventListener("scroll",()=>{
+  scrollOffset=window.scrollY*0.04;
+});
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  stars.forEach(s=>{
+    const x=s.x+mouseX*80*s.depth;
+    const y=s.y+mouseY*80*s.depth+scrollOffset*s.depth;
+    ctx.beginPath();
+    ctx.arc(x,y,s.r,0,Math.PI*2);
+    ctx.fillStyle="rgba(165,180,252,.8)";
+    ctx.shadowBlur=8;
+    ctx.shadowColor="#6366f1";
+    ctx.fill();
+    s.y+=s.speed*s.depth;
+    if(s.y>canvas.height){
+      s.y=0;
+      s.x=Math.random()*canvas.width;
+    }
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>

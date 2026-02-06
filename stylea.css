@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+  }
+  
+  body {
+    background: #050505;
+    color: white;
+    overflow-x: hidden;
+  }
+  
+  #bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  
+  /* HERO */
+  .hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+    letter-spacing: 1px;
+  }
+  
+  .hero p {
+    opacity: 0.7;
+    margin: 12px 0 30px;
+  }
+  
+  /* BUTTONS */
+  .btn {
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .btn.primary {
+    background: #7f5af0;
+    color: white;
+    border: none;
+  }
+  
+  .btn.primary:hover {
+    box-shadow: 0 10px 30px rgba(127,90,240,0.5);
+    transform: translateY(-2px);
+  }
+  
+  .btn.outline {
+    border: 1px solid #7f5af0;
+    color: #7f5af0;
+    background: transparent;
+  }
+  
+  .btn.outline:hover {
+    background: #7f5af0;
+    color: white;
+  }
+  
+  /* SECTIONS */
+  .section {
+    padding: 80px 10%;
+  }
+  
+  .section h2 {
+    margin-bottom: 40px;
+    font-size: 2rem;
+  }
+  
+  /* GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  
+  /* CARDS */
+  .card {
+    padding: 25px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-6px);
+  }
+  
+  /* TIMELINE */
+  .timeline li {
+    margin-bottom: 15px;
+    opacity: 0.85;
+  }
+  
+  /* CONTACT */
+  .contact-form {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+  }
+  
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 30px;
+    opacity: 0.5;
+  }
+  
